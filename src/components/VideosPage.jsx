@@ -15,10 +15,11 @@ const VideosPage = () => {
       speakerEn: "Dr. Ahmed Khamis Sheta",
       descriptionKey: "video_1_description",
       duration: "9:48",
-      views: "2.5K",
+      views: "439",
       category: "تعريفية",
       categoryEn: "Introductory",
-      videoUrl: "https://www.youtube.com/embed/DRaI8HuBbQ0"
+      videoUrl: "https://www.youtube.com/embed/DRaI8HuBbQ0",
+      speakerImage: "/dr-ahmed-sheta.png"
     },
     {
       id: 2,
@@ -27,10 +28,11 @@ const VideosPage = () => {
       speakerEn: "Scholars' Sufism Channel",
       descriptionKey: "video_2_description",
       duration: "3:52",
-      views: "1.8K",
+      views: "382",
       category: "دفاع عن التصوف",
       categoryEn: "Defense of Sufism",
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      speakerImage: "/dr-ahmed-sheta.png"
     },
     {
       id: 3,
@@ -39,10 +41,11 @@ const VideosPage = () => {
       speakerEn: "Scholars' Sufism Channel",
       descriptionKey: "video_3_description",
       duration: "4:50",
-      views: "1.2K",
+      views: "261",
       category: "شعر صوفي",
       categoryEn: "Sufi Poetry",
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      speakerImage: "/dr-ahmed-sheta.png"
     },
     {
       id: 4,
@@ -50,11 +53,12 @@ const VideosPage = () => {
       speaker: "د. أحمد خميس شتيه",
       speakerEn: "Dr. Ahmed Khamis Sheta",
       descriptionKey: "video_4_description",
-      duration: "45:30",
-      views: "3.1K",
+      duration: "45:14",
+      views: "139",
       category: "شرح كتب",
       categoryEn: "Book Explanations",
-      videoUrl: "https://www.youtube.com/embed/OOlqV5tBUIQ"
+      videoUrl: "https://www.youtube.com/embed/WhAKPUlI-Ms",
+      speakerImage: "/dr-ahmed-sheta.png"
     },
     {
       id: 5,
@@ -63,10 +67,11 @@ const VideosPage = () => {
       speakerEn: "Dr. Ahmed Sheta",
       descriptionKey: "video_5_description",
       duration: "12:15",
-      views: "4.2K",
+      views: "966",
       category: "فقه",
       categoryEn: "Fiqh",
-      videoUrl: "https://www.youtube.com/embed/-mfTBefAcDw"
+      videoUrl: "https://www.youtube.com/embed/dmAYCzxm2Ws",
+      speakerImage: "/dr-ahmed-sheta.png"
     },
     {
       id: 6,
@@ -75,10 +80,11 @@ const VideosPage = () => {
       speakerEn: "Scholars' Sufism Channel",
       descriptionKey: "video_6_description",
       duration: "1:26",
-      views: "950",
+      views: "171",
       category: "نصائح",
       categoryEn: "Advice",
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      speakerImage: "/dr-ahmed-sheta.png"
     }
   ];
 
@@ -150,6 +156,13 @@ const VideosPage = () => {
                   {t(video.titleKey)}
                 </CardTitle>
                 <CardDescription className="text-blue-700 font-medium flex items-center">
+                  {video.speakerImage && (
+                    <img 
+                      src={video.speakerImage} 
+                      alt={isArabic ? video.speaker : video.speakerEn}
+                      className="w-6 h-6 rounded-full mr-2 object-cover"
+                    />
+                  )}
                   <User className="w-4 h-4 mr-1" />
                   {isArabic ? video.speaker : video.speakerEn}
                 </CardDescription>
@@ -180,6 +193,33 @@ const VideosPage = () => {
           >
             {t('load_more_videos')}
           </Button>
+        </div>
+
+        {/* About Dr. Ahmed Sheta Section */}
+        <div className="mt-16 bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8">
+          <div className="flex flex-col md:flex-row items-center gap-8">
+            <div className="flex-shrink-0">
+              <img 
+                src="/dr-ahmed-sheta.png" 
+                alt="د. أحمد خميس شتيه"
+                className="w-32 h-32 rounded-full object-cover border-4 border-white shadow-lg"
+              />
+            </div>
+            <div className="flex-1 text-center md:text-right">
+              <h3 className="text-2xl font-bold text-gray-800 mb-2">
+                {isArabic ? "د. أحمد خميس شتيه" : "Dr. Ahmed Khamis Sheta"}
+              </h3>
+              <p className="text-blue-700 font-medium mb-3">
+                {isArabic ? "مؤسس مشروع تصوف العلماء" : "Founder of Scholars' Sufism Project"}
+              </p>
+              <p className="text-gray-600 leading-relaxed">
+                {isArabic 
+                  ? "عالم ومفكر إسلامي متخصص في التصوف والعلوم الشرعية، يسعى لتجديد الخطاب الصوفي وربطه بالمنهج العلمي الأصيل المبني على الكتاب والسنة."
+                  : "An Islamic scholar and thinker specializing in Sufism and Islamic sciences, seeking to renew Sufi discourse and link it to the authentic scientific methodology based on the Quran and Sunnah."
+                }
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

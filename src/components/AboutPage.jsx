@@ -49,6 +49,8 @@ const AboutPage = () => {
     }
   ];
 
+  const isArabic = t('home') === 'الرئيسية';
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-indigo-50 py-8">
       <div className="container mx-auto px-4">
@@ -61,9 +63,82 @@ const AboutPage = () => {
           </div>
           <h1 className="text-4xl font-bold text-gray-800 mb-4">{t('about_us_title')}</h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            تعرف على رؤية ورسالة وأهداف مشروع تصوف العلماء
+            {isArabic 
+              ? "تعرف على رؤية ورسالة وأهداف مشروع تصوف العلماء"
+              : "Learn about the vision, mission, and goals of the Scholars' Sufism Project"
+            }
           </p>
         </div>
+
+        {/* About Dr. Ahmed Sheta - Featured Section */}
+        <Card className="mb-12 border-emerald-100 bg-gradient-to-r from-emerald-50 to-blue-50">
+          <CardHeader>
+            <div className="flex items-center mb-4">
+              <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-lg flex items-center justify-center mr-4">
+                <User className="w-6 h-6 text-white" />
+              </div>
+              <CardTitle className="text-2xl text-emerald-800">
+                {isArabic ? "مؤسس المشروع" : "Project Founder"}
+              </CardTitle>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <div className="grid md:grid-cols-3 gap-6 items-center">
+              {/* Dr. Ahmed Sheta's Image */}
+              <div className="flex justify-center">
+                <div className="relative">
+                  <img 
+                    src="/dr-ahmed-sheta.png" 
+                    alt="د. أحمد خميس شتيه"
+                    className="w-48 h-48 rounded-full object-cover border-4 border-white shadow-xl"
+                  />
+                  <div className="absolute -bottom-2 -right-2 w-12 h-12 bg-gradient-to-br from-emerald-500 to-blue-500 rounded-full flex items-center justify-center">
+                    <Award className="w-6 h-6 text-white" />
+                  </div>
+                </div>
+              </div>
+              
+              {/* Dr. Ahmed Sheta's Information */}
+              <div className="md:col-span-2">
+                <h3 className="text-3xl font-bold text-gray-800 mb-2">
+                  {isArabic ? "د. أحمد خميس شتيه" : "Dr. Ahmed Khamis Sheta"}
+                </h3>
+                <p className="text-emerald-700 font-semibold text-lg mb-4">
+                  {isArabic 
+                    ? "مدرس الدراسات الإسلامية بكلية الآداب، جامعة دمنهور"
+                    : "Lecturer of Islamic Studies, Faculty of Arts, Damanhour University"
+                  }
+                </p>
+                <p className="text-gray-700 leading-relaxed mb-4">
+                  {isArabic
+                    ? "متخصص في علم التصوف الإسلامي، وله شروح عدة على كتب الصوفية ويقدّر كثيراً دور الصوفية في تربية النفس والتزكية. يسعى من خلال هذا المشروع إلى تجديد الخطاب الصوفي وربطه بالمنهج العلمي الأصيل المبني على الكتاب والسنة."
+                    : "Specialist in Islamic Sufism, with several commentaries on Sufi books and great appreciation for the role of Sufism in self-education and purification. Through this project, he seeks to renew Sufi discourse and link it to the authentic scientific methodology based on the Quran and Sunnah."
+                  }
+                </p>
+                <div className="bg-white rounded-lg p-4 shadow-sm">
+                  <h4 className="font-semibold text-emerald-800 mb-3">
+                    {isArabic ? "التخصص والاهتمامات:" : "Specialization & Interests:"}
+                  </h4>
+                  <div className="grid grid-cols-2 gap-2">
+                    {[
+                      { ar: "علم التصوف الإسلامي", en: "Islamic Sufism" },
+                      { ar: "الدراسات الإسلامية", en: "Islamic Studies" },
+                      { ar: "التربية والتزكية", en: "Education & Purification" },
+                      { ar: "تجديد الخطاب الصوفي", en: "Renewing Sufi Discourse" }
+                    ].map((item, index) => (
+                      <div key={index} className="flex items-center">
+                        <div className="w-2 h-2 bg-emerald-500 rounded-full mr-3"></div>
+                        <span className="text-gray-700 text-sm">
+                          {isArabic ? item.ar : item.en}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Vision and Mission */}
         <div className="grid lg:grid-cols-2 gap-8 mb-12">
@@ -73,13 +148,17 @@ const AboutPage = () => {
                 <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center mr-4">
                   <Target className="w-6 h-6 text-white" />
                 </div>
-                <CardTitle className="text-2xl text-purple-800">الرؤية</CardTitle>
+                <CardTitle className="text-2xl text-purple-800">
+                  {isArabic ? "الرؤية" : "Vision"}
+                </CardTitle>
               </div>
             </CardHeader>
             <CardContent>
               <p className="text-gray-700 leading-relaxed">
-                إعادة بعث علم التصوف الذي يبين أبعاد الإسلام الثلاثة: الإسلام والإيمان والإحسان، 
-                وتجديد الخطاب الصوفي ليكون مبنياً على الكتاب والسنة، بعيداً عن الخرافات والبدع.
+                {isArabic
+                  ? "إعادة بعث علم التصوف الذي يبين أبعاد الإسلام الثلاثة: الإسلام والإيمان والإحسان، وتجديد الخطاب الصوفي ليكون مبنياً على الكتاب والسنة، بعيداً عن الخرافات والبدع."
+                  : "Reviving the science of Sufism that explains the three dimensions of Islam: Islam, Faith, and Excellence, and renewing Sufi discourse to be based on the Quran and Sunnah, away from superstitions and innovations."
+                }
               </p>
             </CardContent>
           </Card>
@@ -90,7 +169,9 @@ const AboutPage = () => {
                 <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-lg flex items-center justify-center mr-4">
                   <BookOpen className="w-6 h-6 text-white" />
                 </div>
-                <CardTitle className="text-2xl text-indigo-800">الرسالة</CardTitle>
+                <CardTitle className="text-2xl text-indigo-800">
+                  {isArabic ? "الرسالة" : "Mission"}
+                </CardTitle>
               </div>
             </CardHeader>
             <CardContent>
@@ -101,56 +182,11 @@ const AboutPage = () => {
           </Card>
         </div>
 
-        {/* About Dr. Ahmed Shetia */}
-        <Card className="mb-12 border-emerald-100">
-          <CardHeader>
-            <div className="flex items-center mb-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-lg flex items-center justify-center mr-4">
-                <User className="w-6 h-6 text-white" />
-              </div>
-              <CardTitle className="text-2xl text-emerald-800">مؤسس المشروع</CardTitle>
-            </div>
-          </CardHeader>
-          <CardContent>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <h3 className="text-xl font-bold text-gray-800 mb-3">د. أحمد خميس شتيه</h3>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  مدرس الدراسات الإسلامية بكلية الآداب، جامعة دمنهور. متخصص في علم التصوف الإسلامي، 
-                  وله شروح عدة على كتب الصوفية ويقدّر كثيراً دور الصوفية في تربية النفس والتزكية.
-                </p>
-                <p className="text-gray-700 leading-relaxed">
-                  {t('about_us_desc_2')}
-                </p>
-              </div>
-              <div className="bg-gradient-to-br from-emerald-50 to-blue-50 rounded-lg p-6">
-                <h4 className="font-semibold text-emerald-800 mb-3">التخصص والاهتمامات:</h4>
-                <ul className="space-y-2 text-gray-700">
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 bg-emerald-500 rounded-full mr-3"></div>
-                    علم التصوف الإسلامي
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 bg-emerald-500 rounded-full mr-3"></div>
-                    الدراسات الإسلامية
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 bg-emerald-500 rounded-full mr-3"></div>
-                    التربية والتزكية
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 bg-emerald-500 rounded-full mr-3"></div>
-                    تجديد الخطاب الصوفي
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
         {/* Objectives */}
         <div className="mb-12">
-          <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">أهداف المشروع</h2>
+          <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
+            {isArabic ? "أهداف المشروع" : "Project Objectives"}
+          </h2>
           <div className="grid md:grid-cols-2 gap-6">
             {objectives.map((objective, index) => (
               <Card key={index} className="border-purple-100 hover:shadow-lg transition-shadow">
@@ -172,7 +208,9 @@ const AboutPage = () => {
 
         {/* Principles */}
         <div className="mb-12">
-          <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">المبادئ الأساسية</h2>
+          <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
+            {isArabic ? "المبادئ الأساسية" : "Core Principles"}
+          </h2>
           <div className="grid md:grid-cols-2 gap-6">
             {principles.map((principle, index) => (
               <Card key={index} className="border-indigo-100 hover:shadow-lg transition-shadow">
@@ -193,9 +231,14 @@ const AboutPage = () => {
             <div className="max-w-3xl mx-auto">
               <div className="text-4xl text-purple-600 mb-4">"</div>
               <p className="text-xl text-gray-800 leading-relaxed mb-4 italic">
-                من تفقه ولم يتصوف فقد تفسق، ومن تصوف ولم يتفقه فقد تزندق، ومن جمع بينهما فقد تحقق
+                {isArabic
+                  ? "من تفقه ولم يتصوف فقد تفسق، ومن تصوف ولم يتفقه فقد تزندق، ومن جمع بينهما فقد تحقق"
+                  : "Whoever learns jurisprudence without Sufism becomes corrupt, whoever practices Sufism without jurisprudence becomes heretical, and whoever combines both achieves realization"
+                }
               </p>
-              <p className="text-purple-700 font-semibold">- الإمام مالك رحمه الله -</p>
+              <p className="text-purple-700 font-semibold">
+                {isArabic ? "- الإمام مالك رحمه الله -" : "- Imam Malik, may Allah have mercy on him -"}
+              </p>
             </div>
           </CardContent>
         </Card>
@@ -204,9 +247,14 @@ const AboutPage = () => {
         <div className="text-center">
           <Card className="max-w-2xl mx-auto border-emerald-100">
             <CardHeader>
-              <CardTitle className="text-2xl text-emerald-800">انضم إلى المشروع</CardTitle>
+              <CardTitle className="text-2xl text-emerald-800">
+                {isArabic ? "انضم إلى المشروع" : "Join the Project"}
+              </CardTitle>
               <CardDescription className="text-lg">
-                كن جزءاً من رحلة التعلم والتزكية على منهج أهل السنة والجماعة
+                {isArabic
+                  ? "كن جزءاً من رحلة التعلم والتزكية على منهج أهل السنة والجماعة"
+                  : "Be part of the journey of learning and purification according to the methodology of Ahl al-Sunnah wa al-Jama'ah"
+                }
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -217,7 +265,7 @@ const AboutPage = () => {
                 </Button>
                 <Button variant="outline" className="border-emerald-600 text-emerald-600 hover:bg-emerald-50">
                   <Users className="w-4 h-4 mr-2" />
-                  تواصل معنا
+                  {isArabic ? "تواصل معنا" : "Contact Us"}
                 </Button>
               </div>
             </CardContent>

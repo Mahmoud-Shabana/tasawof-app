@@ -111,7 +111,19 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-          <p>{t('footer_rights')}</p>
+          <p className="flex items-center justify-center gap-1 flex-wrap">
+            <span>{t('footer_rights')}</span>
+            <style jsx>{`
+              @keyframes heartbeat {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.2); }
+                100% { transform: scale(1); }
+              }
+              .animate-heartbeat {
+                animation: heartbeat 1.5s ease-in-out infinite;
+              }
+            `}</style>
+          </p>
         </div>
       </div>
     </footer>
